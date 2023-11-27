@@ -32,13 +32,12 @@ public class SecurityConfig {
         this.passwordEncode = passwordEncode;
     }
 
-    // User Creation
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserInfoService();
     }
 
-    // Configuring HttpSecurity
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
