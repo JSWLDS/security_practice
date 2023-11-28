@@ -38,9 +38,15 @@ public class SecurityConfig {
         return new UserInfoService();
     }
 
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("all")
+                .failureForwardUrl("error")
+                .and()
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(new AntPathRequestMatcher("/auth/welcome")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/auth/addNewUser")).permitAll()

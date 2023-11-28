@@ -45,6 +45,7 @@ public class UserInfoService implements UserDetailsService {
 
     public String addUser(UserInfo userInfo) {
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
+        System.out.println(userInfo.getPassword());
         repository.save(userInfo);
         return "User Added Successfully";
     }
