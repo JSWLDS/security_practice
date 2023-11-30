@@ -1,7 +1,7 @@
 package com.example.security_practice.service;
 
-import com.example.security_practice.entity.UserInfo;
-import com.example.security_practice.repository.UserInfoRepository;
+import com.example.security_practice.entity.Member;
+import com.example.security_practice.repository.MemberDetailRepository;
 import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +16,15 @@ import java.util.Optional;
 @Transactional
 @NoArgsConstructor
 @Service
-public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class MemberDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
-    private UserInfoRepository repository;
+    private MemberDetailRepository repository;
 
 
     private PasswordEncoder encoder;
 
     @Autowired
-    public UserDetailsService(UserInfoRepository repository, PasswordEncoder encoder) {
+    public MemberDetailsService(MemberDetailRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
     }
@@ -33,14 +33,14 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<UserInfo> userDetail = repository.findByName(username);
+        Optional<Member> userDetail = repository.findByName(username);
 
         // Converting userDetail to UserDetails
-        return userDetail.map(UserInfoDetails::new)
+        return userDetail.map(MemberDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
     }
 
-    public String addUser(UserInfo userInfo) {
+    public String addUser(Member userInfo) {
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         System.out.println(userInfo.getPassword());
         repository.save(userInfo);

@@ -1,7 +1,7 @@
 package com.example.security_practice.config;
 
 import com.example.security_practice.filter.JwtAuthFilter;
-import com.example.security_practice.service.UserDetailsService;
+import com.example.security_practice.service.MemberDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +31,8 @@ public class SecurityConfig {
 
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService();
+    public MemberDetailsService userDetailsService() {
+        return new MemberDetailsService();
     }
 
 

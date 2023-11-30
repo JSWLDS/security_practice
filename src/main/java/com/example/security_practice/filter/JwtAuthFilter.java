@@ -1,6 +1,6 @@
 package com.example.security_practice.filter;
 import com.example.security_practice.service.provider.JwtProvider;
-import com.example.security_practice.service.UserDetailsService;
+import com.example.security_practice.service.MemberDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,11 +20,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
 
-    private final UserDetailsService userDetailsService;
+    private final MemberDetailsService memberDetailsService;
 
-    public JwtAuthFilter(JwtProvider jwtProvider, UserDetailsService userDetailsService) {
+    public JwtAuthFilter(JwtProvider jwtProvider, MemberDetailsService memberDetailsService) {
         this.jwtProvider = jwtProvider;
-        this.userDetailsService = userDetailsService;
+        this.memberDetailsService = memberDetailsService;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = memberDetailsService.loadUserByUsername(username);
             if (jwtProvider.validateToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

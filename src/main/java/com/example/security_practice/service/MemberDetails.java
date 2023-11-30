@@ -1,8 +1,5 @@
 package com.example.security_practice.service;
-import com.example.security_practice.entity.UserInfo;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import com.example.security_practice.entity.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,13 +11,13 @@ import java.util.stream.Collectors;
 
 
 
-public class UserInfoDetails implements UserDetails {
+public class MemberDetails implements UserDetails {
 
     private String name;
     private String password;
     private List<GrantedAuthority> authorities;
 
-    public UserInfoDetails(UserInfo userInfo) {
+    public MemberDetails(Member userInfo) {
         name = userInfo.getName();
         password = userInfo.getPassword();
         authorities = Arrays.stream(userInfo.getRoles().split(","))
