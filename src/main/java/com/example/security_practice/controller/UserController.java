@@ -3,10 +3,9 @@ package com.example.security_practice.controller;
 
 import com.example.security_practice.entity.AuthRequest;
 import com.example.security_practice.entity.UserInfo;
-import com.example.security_practice.service.UserInfoService;
-import com.example.security_practice.service.JwtService;
+import com.example.security_practice.service.UserDetailsService;
+import com.example.security_practice.service.provider.JwtProvider;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,9 +18,9 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
-    private UserInfoService service;
+    private UserDetailsService service;
 
-    private JwtService jwtService;
+    private JwtProvider jwtService;
 
     private AuthenticationManager authenticationManager;
 

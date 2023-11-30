@@ -3,12 +3,9 @@ package com.example.security_practice.service;
 import com.example.security_practice.entity.UserInfo;
 import com.example.security_practice.repository.UserInfoRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +16,7 @@ import java.util.Optional;
 @Transactional
 @NoArgsConstructor
 @Service
-public class UserInfoService implements UserDetailsService {
+public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 
     private UserInfoRepository repository;
 
@@ -27,7 +24,7 @@ public class UserInfoService implements UserDetailsService {
     private PasswordEncoder encoder;
 
     @Autowired
-    public UserInfoService(UserInfoRepository repository, PasswordEncoder encoder) {
+    public UserDetailsService(UserInfoRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
     }
