@@ -15,14 +15,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 // This class helps us to validate the generated jwt token
-@Component
-public class JwtAuthFilter extends OncePerRequestFilter {
+@Component                                  // 각 http요청에 단 한번만 실행되도록 보장. 여러번의 요청에 동일한 필터를 반복실행 방지.
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
 
     private final MemberDetailsService memberDetailsService;
 
-    public JwtAuthFilter(JwtProvider jwtProvider, MemberDetailsService memberDetailsService) {
+    public JwtAuthenticationFilter(JwtProvider jwtProvider, MemberDetailsService memberDetailsService) {
         this.jwtProvider = jwtProvider;
         this.memberDetailsService = memberDetailsService;
     }

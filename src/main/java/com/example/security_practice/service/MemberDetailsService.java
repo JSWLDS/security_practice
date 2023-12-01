@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @Transactional
 @NoArgsConstructor
 @Service
-public class MemberDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class MemberDetailsService implements UserDetailsService {
 
     private MemberDetailRepository repository;
 

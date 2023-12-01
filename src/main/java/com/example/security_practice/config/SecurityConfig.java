@@ -1,6 +1,6 @@
 package com.example.security_practice.config;
 
-import com.example.security_practice.filter.JwtAuthFilter;
+import com.example.security_practice.filter.JwtAuthenticationFilter;
 import com.example.security_practice.service.MemberDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,11 +20,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final JwtAuthFilter authFilter;
+    private final JwtAuthenticationFilter authFilter;
     private final PasswordEncoderConfig passwordEncode;
 
     @Autowired
-    public SecurityConfig(JwtAuthFilter authFilter, PasswordEncoderConfig passwordEncode) {
+    public SecurityConfig(JwtAuthenticationFilter authFilter, PasswordEncoderConfig passwordEncode) {
         this.authFilter = authFilter;
         this.passwordEncode = passwordEncode;
     }
