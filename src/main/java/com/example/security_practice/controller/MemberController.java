@@ -3,8 +3,8 @@ package com.example.security_practice.controller;
 
 import com.example.security_practice.entity.AuthRequest;
 import com.example.security_practice.entity.Member;
-import com.example.security_practice.service.MemberDetailsService;
-import com.example.security_practice.service.provider.JwtProvider;
+import com.example.security_practice.provider.service.MemberDetailsService;
+import com.example.security_practice.provider.JwtProvider;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class MemberController {
 
-    private MemberDetailsService service;
+    private MemberDetailsService memberDetailsService;
 
     private JwtProvider jwtService;
 
@@ -31,7 +31,7 @@ public class MemberController {
 
     @PostMapping("/addNewUser")
     public String addNewUser(@RequestBody Member userInfo) {
-        return service.addUser(userInfo);
+        return memberDetailsService.addUser(userInfo);
     }
 
     @GetMapping("/user/userProfile")

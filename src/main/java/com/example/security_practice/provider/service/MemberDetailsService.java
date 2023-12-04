@@ -1,4 +1,4 @@
-package com.example.security_practice.service;
+package com.example.security_practice.provider.service;
 
 import com.example.security_practice.entity.Member;
 import com.example.security_practice.repository.MemberDetailRepository;
@@ -34,10 +34,10 @@ public class MemberDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Optional<Member> userDetail = repository.findByName(username);
+        Optional<Member> userDetail = repository.findMemberByUsername(username);
 
         // Converting userDetail to UserDetails
-        return userDetail.map(MemberDetails::new)
+        return userDetail.map(MemberDetailsImpl::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username));
     }
 

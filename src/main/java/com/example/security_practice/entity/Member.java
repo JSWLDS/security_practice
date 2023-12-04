@@ -17,8 +17,8 @@ public class Member {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "nickname")
+    private String nickname;
 
     @Column(name = "username")
     private String username;
@@ -29,7 +29,8 @@ public class Member {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "roles")
-    private String roles;
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private UserRoleEnum role;
 
 }

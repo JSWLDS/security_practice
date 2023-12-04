@@ -1,6 +1,6 @@
 package com.example.security_practice.filter;
-import com.example.security_practice.service.provider.JwtProvider;
-import com.example.security_practice.service.MemberDetailsService;
+import com.example.security_practice.provider.JwtProvider;
+import com.example.security_practice.provider.service.MemberDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

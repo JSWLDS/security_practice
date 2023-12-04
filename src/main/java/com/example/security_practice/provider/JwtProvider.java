@@ -1,4 +1,4 @@
-package com.example.security_practice.service.provider;
+package com.example.security_practice.provider;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
