@@ -24,11 +24,11 @@ public class MemberDetailsService implements UserDetailsService {
 
     private PasswordEncoder encoder;
 
-    @Autowired
-    public MemberDetailsService(MemberDetailRepository repository, PasswordEncoder encoder) {
-        this.repository = repository;
-        this.encoder = encoder;
-    }
+        @Autowired
+        public MemberDetailsService(MemberDetailRepository repository, PasswordEncoder encoder) {
+            this.repository = repository;
+            this.encoder = encoder;
+        }
 
 
     @Override

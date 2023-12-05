@@ -29,7 +29,7 @@ public class Member {
     @Column(name = "password")
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "role")
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
